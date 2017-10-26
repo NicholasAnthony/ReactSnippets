@@ -1,0 +1,68 @@
+react interview questions:
+
+Lifecycle Methods:
+componentWillMount() - doing some configuration of the root component
+componentDidMount() - fetch data from a server - initialize anything that relies on the DOM - add event listeners
+componentWillReceiveProps(nextProps) - If you have a state that is a calculation from multiple props, you could do the calculation here.
+shouldComponentUpdate(nextState, nextProps) -  check, if the update of props or state affect the output of the component and update depending
+componentWillUpdate(nextProps, nextState) - Not called for initial render - set a variable based on state changes - dispatching events - starting animations
+componentDidUpdate(prevProps, prevState) - Perform network requests
+componentWillUnmount() - removing event listeners you added in componentDidMount - cleaning up DOM elements - cancelling active network requests
+
+What does setState do?
+Starts reconciliation > construct a new tree of React elements (object representation of your UI) > React will diff this new tree against the previous element tree
+
+What is the Virtual DOM?
+  - A virtual DOM is a JavaScript object which originally is just the copy of the real DOM. It is a node tree that lists the elements & attributes and content as Objects & properties. 
+
+React ES6 vs ES5?
+  - require vs import • state • props • component and function  • export vs exports 
+
+Differentiate between states and props?
+￼
+
+Differentiate between stateful and stateless components.?
+￼
+List down the components of Redux.
+  Action – It’s an object that describes what happened.
+  Reducer –  It is a place to determine how the state will change.
+  Store – State/ Object tree of the entire application is saved in the Store.
+  View – Simply displays the data provided by the Store.
+
+Explain the purpose of render() in React.
+  - render() returns a single React element which is the representation of the native DOM component
+
+Difference between an Element and a Component 
+  - React element is an object representation of some UI.
+  - React component is a function or a class which optionally accepts input and returns a React element
+
+When would you use a Class Component over a Functional Component?
+  - If your component has state or a lifecycle method(s), use a Class component. Otherwise, use a Functional component.
+
+What are refs in React and why are they important?
+  - to use them you add a ref attribute to your component whose value is a callback function which will receive the DOM element ref={(input) => this.input = input}
+  - refs can also be used with functional components by leveraging closures in JavaScript `ref={(input) => inputElement = input}`
+  - When you need to manage focus, select text or media playback  | To trigger imperative animations | Integrate with third-party DOM libraries
+
+What are keys in React and why are they important?
+  - Keys are what help React keep track of what items have changed, been added, or been removed from a list.
+  -  React can use the key on a child element to quickly know if an element is new or if it was just moved when comparing trees
+
+What is the render callback pattern?
+  - When a component receives a function as its child
+
+What is the difference between a controlled component vs uncontrolled component?
+  - A controlled component is a component where React is in control and is the single source of truth for the form data.
+  - An uncontrolled component is where your form data is handled by the DOM, instead of inside your React component use refs to accomplish this.
+
+In which lifecycle event do you make AJAX requests and why?
+  - AJAX requests should go in the componentDidMount lifecycle event.
+
+How do you tell React to build in Production mode and what will that do?
+  - Use Webpack’s DefinePlugin method to set NODE_ENV to production. Strips out things like propType validation and extra warnings. 
+
+Describe how events are handled in React.
+  - Event handlers in React will be passed instances of SyntheticEvent, React’s cross-browser wrapper around the browser’s native event.
+
+What is the second argument that can optionally be passed to setState and what is its purpose?
+   - A callback function which will be invoked when setState has finished and the component is re-rendered.
